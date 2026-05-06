@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>Spam Check</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
   <!-- <link rel="stylesheet" href="/static/style.css"> -->
 </head>
+
 <body>
 
   <!-- ===========pop up notice=========== -->
@@ -29,63 +31,59 @@
       <button type="submit">Check Email</button>
     </form>
     <!-- ===============form end============ -->
-    
-<!-- ===================================================================================================================== -->
+
+    <!-- ===================================================================================================================== -->
 
     <!-- ===============result div start============ -->
     {% if result %}
-      <div class="result">
-        <p><strong>Prediction:</strong> {{ result }}</p>
-          <!-- ===============prediction confidence bar============ -->
-          <div class="progress-bar">
-            <div
-              class="progress-fill {{ result | lower }}"
-              style="width: {{ confidence[:-1] }}%">
-            </div>
-          </div>
-        <p><strong>Confidence:</strong> {{ confidence }}</p>
+    <div class="result">
+      <p><strong>Prediction:</strong> {{ result }}</p>
+      <!-- ===============prediction confidence bar============ -->
+      <div class="progress-bar">
+        <div class="progress-fill {{ result | lower }}" style="width: {{ confidence[:-1] }}%">
+        </div>
       </div>
+      <p><strong>Confidence:</strong> {{ confidence }}</p>
+    </div>
     {% endif %}
     <!-- ===============result div ends============ -->
 
-<!-- ===================================================================================================================== -->
+    <!-- ===================================================================================================================== -->
 
-    <!-- ===============disclaimer start============ -->    
+    <!-- ===============disclaimer start============ -->
     <p style="text-align:center; margin-top:20px;">
       <a href="/disclaimer" class="disclaimer" style="color:#000; text-decoration:none;">Disclaimer & Safety Tips</a>
     </p>
-    <!-- ===============disclaimer ends============ -->    
+    <!-- ===============disclaimer ends============ -->
 
     <!-- ==============footer================ -->
     <footer class="footer">
       <p>Design and Developed by</p>
-      <h3>Imandi Kesava Bhavani Raju</h3>
+      <h3>Anmol Kankarwal</h3>
       <div class="social-links">
-        <a href="https://github.com/kesavaimandi" target="_blank">GitHub</a> |
-        <a href="https://www.linkedin.com/in/imandi-kesava" target="_blank">LinkedIn</a>
+        <a href="https://github.com/Anmolkankarwal" target="_blank">GitHub</a> |
+        <a href="https://www.linkedin.com/in/anmol-kankarwal-29ab32327/" target="_blank">LinkedIn</a>
       </div>
     </footer>
   </div>
-<!-- ==============container ends================ -->
+  <!-- ==============container ends================ -->
 
-<!-- js for consent popup with sessionStorage, hide the popup -->
+  <!-- js for consent popup with sessionStorage, hide the popup -->
   <script>
-    window.addEventListener('DOMContentLoaded', () => 
-    {
+    window.addEventListener('DOMContentLoaded', () => {
       const popup = document.getElementById('consentPopup');
       const closeBtn = document.getElementById('closePopup');
 
-      if (sessionStorage.getItem('consentAccepted')) 
-      {
+      if (sessionStorage.getItem('consentAccepted')) {
         popup.style.display = 'none';
       }
 
-      closeBtn.addEventListener('click', () => 
-      {
+      closeBtn.addEventListener('click', () => {
         popup.style.display = 'none';
         sessionStorage.setItem('consentAccepted', 'true');
       });
     });
   </script>
 </body>
+
 </html>
